@@ -7,10 +7,25 @@ struct TaskRowView: View {
     @State private var isHovered = false
     @State private var isEditing = false
     @State private var editText = ""
+    @State private var showDueDatePopover = false
 
     var body: some View {
         HStack(spacing: 10) {
-            // Checkbox with spring bounce animation
+            // Priority circle (left of checkbox)
+            Button {
+                store.setPriority(item, priority: item.priority.next)
+            } label: {
+                Circle()
+                    .fill(item.priority.color)
+                    .frame(width: 10, height: 10)
+            }
+            .buttonStyle(.plain)
+            .help("点击切换优先级")
+            .onHover { inside in
+                if inside { NSCursor.pointingHand.push() } else { NSCursor.pop() }
+            }
+
+            // Checkbox
             Button {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
                     store.toggleComplete(item)
@@ -24,16 +39,13 @@ struct TaskRowView: View {
             }
             .buttonStyle(.plain)
 
-            // Title or inline editor
+            // Title / inline editor
             if isEditing {
                 TextField("", text: $editText)
                     .textFieldStyle(.plain)
                     .font(.body)
                     .onSubmit { commitEdit() }
-                    .onKeyPress(.escape) {
-                        isEditing = false
-                        return .handled
-                    }
+                    .onKeyPress(.escape) { isEditing = false; return .handled }
             } else {
                 Text(item.title)
                     .font(.body)
@@ -43,12 +55,35 @@ struct TaskRowView: View {
                     .onTapGesture(count: 2) { startEditing() }
             }
 
-            // Hover-reveal delete button
+            // Hover-reveal: date button + delete
             if isHovered && !isEditing {
+                // Date entry point
                 Button {
-                    withAnimation(.easeOut(duration: 0.2)) {
-                        store.deleteItem(item)
+                    showDueDatePopover = true
+                } label: {
+                    Group {
+                        if let due = item.dueDate {
+                            Text(due.formatted(date: .abbreviated, time: .omitted))
+                                .font(.caption)
+                                .foregroundStyle(due < Date() ? .red : .secondary)
+                        } else {
+                            Image(systemName: "calendar")
+                                .foregroundStyle(.secondary)
+                                .font(.callout)
+                        }
                     }
+                }
+                .buttonStyle(.plain)
+                .popover(isPresented: $showDueDatePopover, arrowEdge: .bottom) {
+                    DueDatePopoverView(item: item)
+                        .environment(store)
+                        .padding()
+                }
+                .transition(.opacity.combined(with: .scale(scale: 0.8)))
+
+                // Delete
+                Button {
+                    withAnimation(.easeOut(duration: 0.2)) { store.deleteItem(item) }
                 } label: {
                     Image(systemName: "trash")
                         .foregroundStyle(.red.opacity(0.8))
@@ -61,19 +96,23 @@ struct TaskRowView: View {
         .padding(.vertical, 2)
         .contentShape(Rectangle())
         .onHover { hovered in
-            withAnimation(.easeInOut(duration: 0.15)) {
-                isHovered = hovered
-            }
+            withAnimation(.easeInOut(duration: 0.15)) { isHovered = hovered }
         }
     }
 
-    private func startEditing() {
-        editText = item.title
-        isEditing = true
-    }
+    private func startEditing() { editText = item.title; isEditing = true }
+    private func commitEdit() { store.updateTitle(item, title: editText); isEditing = false }
+}
 
-    private func commitEdit() {
-        store.updateTitle(item, title: editText)
-        isEditing = false
+// MARK: - Priority color
+
+extension Priority {
+    var color: Color {
+        switch self {
+        case .none:   return .gray.opacity(0.35)
+        case .low:    return .blue
+        case .medium: return .yellow
+        case .high:   return .red
+        }
     }
 }
