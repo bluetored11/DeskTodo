@@ -27,15 +27,17 @@ struct TaskListView: View {
         }
         .navigationTitle("收件箱")
         .toolbar {
-            // 待完成计数
-            ToolbarItem(placement: .automatic) {
-                let pending = store.items.filter { !$0.isCompleted }.count
-                Text(pending == 0 && !store.items.isEmpty ? "全部完成 🎉" : "\(pending) 项待完成")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+            // 待完成计数：紧凑模式下隐藏，避免与 Pin 按钮争夺有限空间
+            if !isPinned {
+                ToolbarItem(placement: .automatic) {
+                    let pending = store.items.filter { !$0.isCompleted }.count
+                    Text(pending == 0 && !store.items.isEmpty ? "全部完成 🎉" : "\(pending) 项待完成")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
-            // Pin 按钮
-            ToolbarItem(placement: .automatic) {
+            // Pin 按钮：primaryAction 保证最高优先级，永远不会被推入溢出菜单
+            ToolbarItem(placement: .primaryAction) {
                 Button {
                     isPinned.toggle()
                 } label: {
