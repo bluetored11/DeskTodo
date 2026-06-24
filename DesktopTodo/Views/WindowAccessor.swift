@@ -7,9 +7,9 @@ struct WindowAccessor: NSViewRepresentable {
 
     func makeNSView(context: Context) -> NSView {
         let view = NSView()
-        Task { @MainActor in
+        DispatchQueue.main.async {
             if let window = view.window {
-                onWindow(window)
+                self.onWindow(window)
             }
         }
         return view
