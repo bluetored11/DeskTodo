@@ -7,16 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		065B9C5FFEBF5ED84414B6EE /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7726462FCBB93AC0A652B6F5 /* TodoStore.swift */; };
+		2453C3B56A9D2F8B08B3C6E5 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C588F85D9B1390B3FE20459 /* TaskListView.swift */; };
 		3FF916C7B164F3512537DA2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D1D2801901BD63CFA74EBD /* Assets.xcassets */; };
+		5ED4EBC1F3EA8CC5DAA84292 /* DesktopTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */; };
+		7D33DE5D3EB9C9EBD916E7F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3413C7CCEC1709C16E7352E /* ContentView.swift */; };
+		C8AB8DDCF3410533A6A5A3AC /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE57CDDF5ED55A3668FC62C /* TodoItem.swift */; };
+		F53998A6E9B04D013DC2D663 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F631D7F4DF5778113D51A /* SidebarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		07D1D2801901BD63CFA74EBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45AA0358E15C871ED31465D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		542F631D7F4DF5778113D51A /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		7726462FCBB93AC0A652B6F5 /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
+		8C588F85D9B1390B3FE20459 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		9D211CB2FC9ABC4607083153 /* DesktopTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesktopTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFE57CDDF5ED55A3668FC62C /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		D3413C7CCEC1709C16E7352E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopTodoApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		0D86E41A1F4AC8B290D6D765 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A38EFF96D1E750DD5AEED42B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7726462FCBB93AC0A652B6F5 /* TodoStore.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CE05EA4EA6C8875E6335C73F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AFE57CDDF5ED55A3668FC62C /* TodoItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D1CAA5D4CC51B9A95B589764 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -25,11 +61,25 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D9DF1477F8EC46122F9F2D66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3413C7CCEC1709C16E7352E /* ContentView.swift */,
+				542F631D7F4DF5778113D51A /* SidebarView.swift */,
+				8C588F85D9B1390B3FE20459 /* TaskListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E11F874C1C4C971A72CD17EA /* DesktopTodo */ = {
 			isa = PBXGroup;
 			children = (
 				07D1D2801901BD63CFA74EBD /* Assets.xcassets */,
 				45AA0358E15C871ED31465D6 /* Info.plist */,
+				0D86E41A1F4AC8B290D6D765 /* App */,
+				CE05EA4EA6C8875E6335C73F /* Models */,
+				A38EFF96D1E750DD5AEED42B /* ViewModels */,
+				D9DF1477F8EC46122F9F2D66 /* Views */,
 			);
 			path = DesktopTodo;
 			sourceTree = "<group>";
@@ -113,6 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D33DE5D3EB9C9EBD916E7F7 /* ContentView.swift in Sources */,
+				5ED4EBC1F3EA8CC5DAA84292 /* DesktopTodoApp.swift in Sources */,
+				F53998A6E9B04D013DC2D663 /* SidebarView.swift in Sources */,
+				2453C3B56A9D2F8B08B3C6E5 /* TaskListView.swift in Sources */,
+				C8AB8DDCF3410533A6A5A3AC /* TodoItem.swift in Sources */,
+				065B9C5FFEBF5ED84414B6EE /* TodoStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
