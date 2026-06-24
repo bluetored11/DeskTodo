@@ -10,6 +10,7 @@
 		065B9C5FFEBF5ED84414B6EE /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7726462FCBB93AC0A652B6F5 /* TodoStore.swift */; };
 		2453C3B56A9D2F8B08B3C6E5 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C588F85D9B1390B3FE20459 /* TaskListView.swift */; };
 		3FF916C7B164F3512537DA2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D1D2801901BD63CFA74EBD /* Assets.xcassets */; };
+		528A7FDAF745350E7CA0824B /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29950064F6CE0D7BB6EEDE97 /* WindowManager.swift */; };
 		5ED4EBC1F3EA8CC5DAA84292 /* DesktopTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */; };
 		7D33DE5D3EB9C9EBD916E7F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3413C7CCEC1709C16E7352E /* ContentView.swift */; };
 		9D417A486DC82366F6EB4127 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846E89F0D2A06A20AEA23 /* TaskRowView.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		07D1D2801901BD63CFA74EBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		29950064F6CE0D7BB6EEDE97 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 		45AA0358E15C871ED31465D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		542F631D7F4DF5778113D51A /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		66378323CB03BD6900DDF3EE /* TaskInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInputView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				66378323CB03BD6900DDF3EE /* TaskInputView.swift */,
 				8C588F85D9B1390B3FE20459 /* TaskListView.swift */,
 				D74846E89F0D2A06A20AEA23 /* TaskRowView.swift */,
+				29950064F6CE0D7BB6EEDE97 /* WindowManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				9D417A486DC82366F6EB4127 /* TaskRowView.swift in Sources */,
 				C8AB8DDCF3410533A6A5A3AC /* TodoItem.swift in Sources */,
 				065B9C5FFEBF5ED84414B6EE /* TodoStore.swift in Sources */,
+				528A7FDAF745350E7CA0824B /* WindowManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
