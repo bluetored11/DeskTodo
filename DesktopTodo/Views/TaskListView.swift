@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TaskListView: View {
     @Environment(TodoStore.self) private var store
+    @Binding var isPinned: Bool
     @State private var selectedItem: TodoItem?
 
     var body: some View {
@@ -26,11 +27,23 @@ struct TaskListView: View {
         }
         .navigationTitle("收件箱")
         .toolbar {
+            // 待完成计数
             ToolbarItem(placement: .automatic) {
                 let pending = store.items.filter { !$0.isCompleted }.count
                 Text(pending == 0 && !store.items.isEmpty ? "全部完成 🎉" : "\(pending) 项待完成")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+            }
+            // Pin 按钮
+            ToolbarItem(placement: .automatic) {
+                Button {
+                    isPinned.toggle()
+                    WindowManager.apply(isPinned: isPinned)
+                } label: {
+                    Image(systemName: isPinned ? "pin.fill" : "pin")
+                        .foregroundStyle(isPinned ? .blue : .secondary)
+                }
+                .help(isPinned ? "取消固定窗口" : "固定在最上层")
             }
         }
         .onKeyPress(.space) {
