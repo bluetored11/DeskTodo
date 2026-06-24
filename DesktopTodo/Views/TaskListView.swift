@@ -38,7 +38,6 @@ struct TaskListView: View {
             ToolbarItem(placement: .automatic) {
                 Button {
                     isPinned.toggle()
-                    WindowManager.apply(isPinned: isPinned)
                 } label: {
                     Image(systemName: isPinned ? "pin.fill" : "pin")
                         .foregroundStyle(isPinned ? .blue : .secondary)

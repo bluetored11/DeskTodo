@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		065B9C5FFEBF5ED84414B6EE /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7726462FCBB93AC0A652B6F5 /* TodoStore.swift */; };
 		2453C3B56A9D2F8B08B3C6E5 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C588F85D9B1390B3FE20459 /* TaskListView.swift */; };
+		30A1B0D79B550951559C71FA /* WindowAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011D7A7E5F91C7FFBCDD784 /* WindowAccessor.swift */; };
 		3FF916C7B164F3512537DA2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D1D2801901BD63CFA74EBD /* Assets.xcassets */; };
 		528A7FDAF745350E7CA0824B /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29950064F6CE0D7BB6EEDE97 /* WindowManager.swift */; };
 		5ED4EBC1F3EA8CC5DAA84292 /* DesktopTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */; };
@@ -29,6 +30,7 @@
 		8C588F85D9B1390B3FE20459 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		9D211CB2FC9ABC4607083153 /* DesktopTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesktopTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE57CDDF5ED55A3668FC62C /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		B011D7A7E5F91C7FFBCDD784 /* WindowAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowAccessor.swift; sourceTree = "<group>"; };
 		D3413C7CCEC1709C16E7352E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D74846E89F0D2A06A20AEA23 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopTodoApp.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				66378323CB03BD6900DDF3EE /* TaskInputView.swift */,
 				8C588F85D9B1390B3FE20459 /* TaskListView.swift */,
 				D74846E89F0D2A06A20AEA23 /* TaskRowView.swift */,
+				B011D7A7E5F91C7FFBCDD784 /* WindowAccessor.swift */,
 				29950064F6CE0D7BB6EEDE97 /* WindowManager.swift */,
 			);
 			path = Views;
@@ -180,6 +183,7 @@
 				9D417A486DC82366F6EB4127 /* TaskRowView.swift in Sources */,
 				C8AB8DDCF3410533A6A5A3AC /* TodoItem.swift in Sources */,
 				065B9C5FFEBF5ED84414B6EE /* TodoStore.swift in Sources */,
+				30A1B0D79B550951559C71FA /* WindowAccessor.swift in Sources */,
 				528A7FDAF745350E7CA0824B /* WindowManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

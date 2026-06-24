@@ -8,8 +8,8 @@ struct WindowManager {
 
     /// 根据 isPinned 状态调整窗口层级与尺寸
     @MainActor
-    static func apply(isPinned: Bool) {
-        guard let window = NSApp.mainWindow else { return }
+    static func apply(isPinned: Bool, window: NSWindow? = nil) {
+        guard let window = window ?? NSApp.mainWindow else { return }
         if isPinned {
             window.level = .floating
             window.minSize = NSSize(width: 320, height: 300)
@@ -17,7 +17,7 @@ struct WindowManager {
         } else {
             window.level = .normal
             window.minSize = normalMinSize
-            window.setContentSize(normalMinSize)  // 避免取消固定后侧边栏挤压
+            window.setContentSize(normalMinSize)
         }
     }
 }
