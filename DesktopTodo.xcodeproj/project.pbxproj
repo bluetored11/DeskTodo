@@ -11,29 +11,46 @@
 		2453C3B56A9D2F8B08B3C6E5 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C588F85D9B1390B3FE20459 /* TaskListView.swift */; };
 		30A1B0D79B550951559C71FA /* WindowAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011D7A7E5F91C7FFBCDD784 /* WindowAccessor.swift */; };
 		3FF916C7B164F3512537DA2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D1D2801901BD63CFA74EBD /* Assets.xcassets */; };
+		4E5CF148ADCB4584D5D368CB /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E56ACC37EE55FCC72F7B9 /* TodoList.swift */; };
 		528A7FDAF745350E7CA0824B /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29950064F6CE0D7BB6EEDE97 /* WindowManager.swift */; };
+		55F0F0806901FED2A281F49B /* TodoStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA8CD16F22D97268C9B349C /* TodoStoreTests.swift */; };
 		5ED4EBC1F3EA8CC5DAA84292 /* DesktopTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */; };
 		7D33DE5D3EB9C9EBD916E7F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3413C7CCEC1709C16E7352E /* ContentView.swift */; };
 		9D417A486DC82366F6EB4127 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846E89F0D2A06A20AEA23 /* TaskRowView.swift */; };
 		9D47253E5E748BA0ABE8EEE8 /* TaskInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66378323CB03BD6900DDF3EE /* TaskInputView.swift */; };
+		A191A9FB734D88BFE408B90A /* ReminderOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE61E8FB51B1F676E353B8A /* ReminderOffset.swift */; };
 		C8AB8DDCF3410533A6A5A3AC /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE57CDDF5ED55A3668FC62C /* TodoItem.swift */; };
 		F53998A6E9B04D013DC2D663 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F631D7F4DF5778113D51A /* SidebarView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		13C748F06A8F8DA4DA748F5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 620BC85F1FB1407375FD7E2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A0E7B7E329C1030E3AF6EAC;
+			remoteInfo = DesktopTodo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		07D1D2801901BD63CFA74EBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29950064F6CE0D7BB6EEDE97 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 		45AA0358E15C871ED31465D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5377B64CD584E4E15FC457DA /* DesktopTodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesktopTodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		542F631D7F4DF5778113D51A /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		606E56ACC37EE55FCC72F7B9 /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		66378323CB03BD6900DDF3EE /* TaskInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInputView.swift; sourceTree = "<group>"; };
 		7726462FCBB93AC0A652B6F5 /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 		8C588F85D9B1390B3FE20459 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		9D211CB2FC9ABC4607083153 /* DesktopTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesktopTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE57CDDF5ED55A3668FC62C /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		B011D7A7E5F91C7FFBCDD784 /* WindowAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowAccessor.swift; sourceTree = "<group>"; };
+		CFA8CD16F22D97268C9B349C /* TodoStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStoreTests.swift; sourceTree = "<group>"; };
 		D3413C7CCEC1709C16E7352E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D74846E89F0D2A06A20AEA23 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopTodoApp.swift; sourceTree = "<group>"; };
+		ECE61E8FB51B1F676E353B8A /* ReminderOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderOffset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -56,7 +73,9 @@
 		CE05EA4EA6C8875E6335C73F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ECE61E8FB51B1F676E353B8A /* ReminderOffset.swift */,
 				AFE57CDDF5ED55A3668FC62C /* TodoItem.swift */,
+				606E56ACC37EE55FCC72F7B9 /* TodoList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -65,8 +84,17 @@
 			isa = PBXGroup;
 			children = (
 				9D211CB2FC9ABC4607083153 /* DesktopTodo.app */,
+				5377B64CD584E4E15FC457DA /* DesktopTodoTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D8C63AECE11991AFAB8BAA23 /* DesktopTodoTests */ = {
+			isa = PBXGroup;
+			children = (
+				CFA8CD16F22D97268C9B349C /* TodoStoreTests.swift */,
+			);
+			path = DesktopTodoTests;
 			sourceTree = "<group>";
 		};
 		D9DF1477F8EC46122F9F2D66 /* Views */ = {
@@ -100,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				E11F874C1C4C971A72CD17EA /* DesktopTodo */,
+				D8C63AECE11991AFAB8BAA23 /* DesktopTodoTests */,
 				D1CAA5D4CC51B9A95B589764 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +136,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		47F874942508B2FB62332AD1 /* DesktopTodoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAABC0A8103CC0589AF186EF /* Build configuration list for PBXNativeTarget "DesktopTodoTests" */;
+			buildPhases = (
+				C631EB08216ED4588A93305F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C0FC508B2EB743D27355244 /* PBXTargetDependency */,
+			);
+			name = DesktopTodoTests;
+			packageProductDependencies = (
+			);
+			productName = DesktopTodoTests;
+			productReference = 5377B64CD584E4E15FC457DA /* DesktopTodoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5A0E7B7E329C1030E3AF6EAC /* DesktopTodo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8E1844ECD729C2602CAF78B /* Build configuration list for PBXNativeTarget "DesktopTodo" */;
@@ -155,6 +202,7 @@
 			projectRoot = "";
 			targets = (
 				5A0E7B7E329C1030E3AF6EAC /* DesktopTodo */,
+				47F874942508B2FB62332AD1 /* DesktopTodoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -171,17 +219,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C631EB08216ED4588A93305F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55F0F0806901FED2A281F49B /* TodoStoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8DCBC9029F2D818B2FB970D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7D33DE5D3EB9C9EBD916E7F7 /* ContentView.swift in Sources */,
 				5ED4EBC1F3EA8CC5DAA84292 /* DesktopTodoApp.swift in Sources */,
+				A191A9FB734D88BFE408B90A /* ReminderOffset.swift in Sources */,
 				F53998A6E9B04D013DC2D663 /* SidebarView.swift in Sources */,
 				9D47253E5E748BA0ABE8EEE8 /* TaskInputView.swift in Sources */,
 				2453C3B56A9D2F8B08B3C6E5 /* TaskListView.swift in Sources */,
 				9D417A486DC82366F6EB4127 /* TaskRowView.swift in Sources */,
 				C8AB8DDCF3410533A6A5A3AC /* TodoItem.swift in Sources */,
+				4E5CF148ADCB4584D5D368CB /* TodoList.swift in Sources */,
 				065B9C5FFEBF5ED84414B6EE /* TodoStore.swift in Sources */,
 				30A1B0D79B550951559C71FA /* WindowAccessor.swift in Sources */,
 				528A7FDAF745350E7CA0824B /* WindowManager.swift in Sources */,
@@ -190,7 +248,34 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0C0FC508B2EB743D27355244 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A0E7B7E329C1030E3AF6EAC /* DesktopTodo */;
+			targetProxy = 13C748F06A8F8DA4DA748F5D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		10EF1AC66593D05F649AA592 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluetored.DesktopTodoTests;
+				SDKROOT = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DesktopTodo.app/Contents/MacOS/DesktopTodo";
+			};
+			name = Release;
+		};
 		15CF94702A69B1795C9BF21B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -210,6 +295,25 @@
 				SDKROOT = macosx;
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		16E481C3085B783D6EB00D52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluetored.DesktopTodoTests;
+				SDKROOT = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DesktopTodo.app/Contents/MacOS/DesktopTodo";
 			};
 			name = Debug;
 		};
@@ -362,6 +466,15 @@
 			buildConfigurations = (
 				6F35342355D2594A14A8FE41 /* Debug */,
 				7D64C51756696E9A7623423A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AAABC0A8103CC0589AF186EF /* Build configuration list for PBXNativeTarget "DesktopTodoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16E481C3085B783D6EB00D52 /* Debug */,
+				10EF1AC66593D05F649AA592 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

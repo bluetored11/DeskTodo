@@ -25,3 +25,14 @@ targets:
       DEVELOPMENT_TEAM: ""
       ENABLE_HARDENED_RUNTIME: YES
       SWIFT_STRICT_CONCURRENCY: complete
+  DesktopTodoTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: DesktopTodoTests
+    dependencies:
+      - target: DesktopTodo
+    settings:
+      SWIFT_VERSION: "6.0"
+      SWIFT_STRICT_CONCURRENCY: complete
