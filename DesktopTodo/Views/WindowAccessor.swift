@@ -16,10 +16,8 @@ struct WindowAccessor: NSViewRepresentable {
     }
 
     func updateNSView(_ nsView: NSView, context: Context) {
-        Task { @MainActor in
-            if let window = nsView.window {
-                onWindow(window)
-            }
-        }
+        // No-op: window is captured once in makeNSView.
+        // Calling onWindow here on every SwiftUI update creates a feedback loop:
+        // setContentSize → AppKit layout → SwiftUI re-render → updateNSView → setContentSize → …
     }
 }
