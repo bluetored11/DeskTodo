@@ -11,6 +11,7 @@ struct ContentView: View {
         } detail: {
             TaskListView(isPinned: $isPinned)
         }
+        .toolbar(removing: .sidebarToggle)
         .background(WindowAccessor { captured in
             window = captured
             // Apply persisted pin state as soon as we have a real window reference
