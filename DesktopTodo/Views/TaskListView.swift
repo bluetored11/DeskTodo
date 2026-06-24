@@ -5,12 +5,20 @@ struct TaskListView: View {
     @Binding var isPinned: Bool
     @State private var selectedItem: TodoItem?
 
+    private var navigationTitle: String {
+        if let id = store.selectedListID,
+           let list = store.lists.first(where: { $0.id == id }) {
+            return list.name
+        }
+        return "收件箱"
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             TaskInputView()
 
             List(selection: $selectedItem) {
-                ForEach(store.items) { item in
+                ForEach(store.currentItems) { item in
                     TaskRowView(item: item)
                         .tag(item)
                         .listRowSeparator(.hidden)
@@ -22,26 +30,24 @@ struct TaskListView: View {
                 }
             }
             .listStyle(.inset)
-            .animation(.spring(response: 0.35, dampingFraction: 0.8), value: store.items.map(\.id))
-            .animation(.spring(response: 0.35, dampingFraction: 0.8), value: store.items.map(\.isCompleted))
+            .animation(.spring(response: 0.35, dampingFraction: 0.8),
+                       value: store.currentItems.map(\.id))
+            .animation(.spring(response: 0.35, dampingFraction: 0.8),
+                       value: store.currentItems.map(\.isCompleted))
         }
-        // Pin 模式下隐藏标题，释放工具栏空间给 Pin 按钮
-        .navigationTitle(isPinned ? "" : "收件箱")
+        .navigationTitle(isPinned ? "" : navigationTitle)
         .toolbar {
-            // 待完成计数（仅普通模式显示，Pin 模式空间不足）
             if !isPinned {
                 ToolbarItem(placement: .automatic) {
-                    let pending = store.items.filter { !$0.isCompleted }.count
-                    Text(pending == 0 && !store.items.isEmpty ? "全部完成 🎉" : "\(pending) 项待完成")
+                    let pending = store.currentItems.filter { !$0.isCompleted }.count
+                    let allDone = pending == 0 && !store.currentItems.isEmpty
+                    Text(allDone ? "全部完成 🎉" : "\(pending) 项待完成")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             }
-            // Pin 按钮：始终在工具栏
             ToolbarItem(placement: .primaryAction) {
-                Button {
-                    isPinned.toggle()
-                } label: {
+                Button { isPinned.toggle() } label: {
                     Image(systemName: isPinned ? "pin.fill" : "pin")
                         .foregroundStyle(isPinned ? .blue : .secondary)
                 }
