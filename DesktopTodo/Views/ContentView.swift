@@ -21,7 +21,12 @@ struct ContentView: View {
             withAnimation {
                 columnVisibility = newValue ? .detailOnly : .automatic
             }
-            WindowManager.apply(isPinned: newValue, window: window)
+            // Defer AppKit resize to the next run-loop cycle so it doesn't
+            // conflict with SwiftUI's in-progress layout pass, which causes
+            // an infinite constraint-update loop and freezes the UI.
+            DispatchQueue.main.async {
+                WindowManager.apply(isPinned: newValue, window: window)
+            }
         }
     }
 }
