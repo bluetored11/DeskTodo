@@ -45,9 +45,18 @@ struct SidebarView: View {
 
     private var inboxRow: some View {
         let count = store.items.filter { $0.list == nil && !$0.isCompleted }.count
+        // List(selection:) treats nil as "no selection", so a nil-tagged row never
+        // receives the click event. Use .onTapGesture to handle it explicitly.
         return Label("收件箱", systemImage: "tray.fill")
             .badge(count)
             .tag(Optional<UUID>.none)
+            .contentShape(Rectangle())
+            .onTapGesture { selectedListID = nil }
+            .listRowBackground(
+                selectedListID == nil
+                    ? RoundedRectangle(cornerRadius: 6).fill(Color.accentColor.opacity(0.15))
+                    : nil
+            )
     }
 
     // MARK: - List row
