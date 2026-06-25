@@ -129,24 +129,7 @@ final class TodoStore {
     }
 
     func move(from source: IndexSet, to destination: Int) {
-        let current = currentItems
-        guard let firstSource = source.first else { return }
-        let sourcePriority = current[firstSource].priority
-        let sourceCompleted = current[firstSource].isCompleted
-
-        // Check the item at or just before the destination slot
-        let checkIdx = min(destination, current.count - 1)
-        let neighborIdx = max(0, destination - 1)
-        let destPriority = current[checkIdx].priority
-        let destCompleted = current[checkIdx].isCompleted
-        let neighborPriority = current[neighborIdx].priority
-        let neighborCompleted = current[neighborIdx].isCompleted
-
-        // Allow the move only if both boundary items share the source's priority group
-        guard (destPriority == sourcePriority && destCompleted == sourceCompleted) ||
-              (neighborPriority == sourcePriority && neighborCompleted == sourceCompleted) else { return }
-
-        var reordered = current
+        var reordered = currentItems
         reordered.move(fromOffsets: source, toOffset: destination)
         for (index, item) in reordered.enumerated() { item.order = index }
         fetch()

@@ -24,9 +24,7 @@ struct TaskListView: View {
                         .listRowSeparator(.hidden)
                 }
                 .onMove { source, destination in
-                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
-                        store.move(from: source, to: destination)
-                    }
+                    store.move(from: source, to: destination)
                 }
             }
             .listStyle(.inset)

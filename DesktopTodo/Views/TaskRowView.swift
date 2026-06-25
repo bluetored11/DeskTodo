@@ -57,7 +57,9 @@ struct TaskRowView: View {
 
             // Hover-reveal: date button + delete
             if isHovered && !isEditing {
-                // Date entry point
+                // Date entry point — only triggers the popover;
+                // the popover itself is anchored to the outer HStack (below)
+                // so it survives the hover-exit that fires on click.
                 Button {
                     showDueDatePopover = true
                 } label: {
@@ -74,11 +76,6 @@ struct TaskRowView: View {
                     }
                 }
                 .buttonStyle(.plain)
-                .popover(isPresented: $showDueDatePopover, arrowEdge: .bottom) {
-                    DueDatePopoverView(item: item)
-                        .environment(store)
-                        .padding()
-                }
                 .transition(.opacity.combined(with: .scale(scale: 0.8)))
 
                 // Delete
@@ -93,10 +90,24 @@ struct TaskRowView: View {
                 .transition(.opacity.combined(with: .scale(scale: 0.8)))
             }
         }
+        // Popover anchored to the row HStack so it persists even when
+        // isHovered flips to false after the user clicks the date button.
+        .popover(isPresented: $showDueDatePopover, arrowEdge: .bottom) {
+            DueDatePopoverView(item: item)
+                .environment(store)
+                .padding()
+        }
         .padding(.vertical, 2)
         .contentShape(Rectangle())
         .onHover { hovered in
+            // Keep the row "hovered" while the popover is open so the date
+            // button stays visible while the user interacts with the popover.
+            guard !showDueDatePopover else { return }
             withAnimation(.easeInOut(duration: 0.15)) { isHovered = hovered }
+        }
+        .onChange(of: showDueDatePopover) { _, showing in
+            // When the popover closes, clear hover so hover-reveal buttons hide.
+            if !showing { isHovered = false }
         }
     }
 
