@@ -246,4 +246,38 @@ final class TodoStoreTests: XCTestCase {
         let remainingSubs = try container.mainContext.fetch(subDescriptor)
         XCTAssertEqual(remainingSubs.count, 0)
     }
+
+    // MARK: - addItemWithSubTasks
+
+    func testAddItemWithSubTasks_createsParentAndChildren() {
+        store.addItemWithSubTasks(title: "汇报", subtaskTitles: ["收集数据", "制作PPT"])
+        XCTAssertEqual(store.items.count, 1)
+        XCTAssertEqual(store.items[0].title, "汇报")
+        XCTAssertEqual(store.items[0].subtasks?.count, 2)
+    }
+
+    func testAddItemWithSubTasks_subtaskTitlesInOrder() {
+        store.addItemWithSubTasks(title: "任务", subtaskTitles: ["步骤1", "步骤2", "步骤3"])
+        let subs = (store.items[0].subtasks ?? []).sorted { $0.order < $1.order }
+        XCTAssertEqual(subs.map(\.title), ["步骤1", "步骤2", "步骤3"])
+        XCTAssertEqual(subs.map(\.order), [0, 1, 2])
+    }
+
+    func testAddItemWithSubTasks_ignoresEmptyTitle() {
+        store.addItemWithSubTasks(title: "  ", subtaskTitles: ["步骤1"])
+        XCTAssertEqual(store.items.count, 0)
+    }
+
+    func testAddItemWithSubTasks_skipsBlankSubtasks() {
+        store.addItemWithSubTasks(title: "任务", subtaskTitles: ["步骤1", "  ", "步骤2"])
+        XCTAssertEqual(store.items[0].subtasks?.count, 2)
+    }
+
+    func testAddItemWithSubTasks_respectsSelectedList() {
+        store.createList(name: "工作")
+        store.selectedListID = store.lists[0].id
+        store.addItemWithSubTasks(title: "任务", subtaskTitles: ["步骤1"])
+        XCTAssertEqual(store.currentItems.count, 1)
+        XCTAssertEqual(store.currentItems[0].list?.name, "工作")
+    }
 }

@@ -137,6 +137,31 @@ final class TodoStore {
         fetch()
     }
 
+    // MARK: - AI task creation
+
+    func addItemWithSubTasks(title: String, subtaskTitles: [String]) {
+        let trimmedTitle = title.trimmingCharacters(in: .whitespaces)
+        guard !trimmedTitle.isEmpty else { return }
+
+        let maxOrder = (items.map(\.order).max() ?? -1) + 1
+        let item = TodoItem(title: trimmedTitle, order: maxOrder)
+        if let id = selectedListID,
+           let list = lists.first(where: { $0.id == id }) {
+            item.list = list
+        }
+        context.insert(item)
+
+        for (index, subTitle) in subtaskTitles.enumerated() {
+            let trimmed = subTitle.trimmingCharacters(in: .whitespaces)
+            guard !trimmed.isEmpty else { continue }
+            let sub = SubTask(title: trimmed, order: index)
+            sub.item = item
+            context.insert(sub)
+        }
+
+        fetch()
+    }
+
     // MARK: - Due date (notification wiring added in Task 6)
 
     func setDueDate(_ item: TodoItem, date: Date, reminderOffset: ReminderOffset?) {
