@@ -65,7 +65,7 @@ struct TaskRowView: View {
                 } label: {
                     Group {
                         if let due = item.dueDate {
-                            Text(due.formatted(date: .abbreviated, time: .omitted))
+                            Text(due.formatted(date: .abbreviated, time: .shortened))
                                 .font(.caption)
                                 .foregroundStyle(due < Date() ? .red : .secondary)
                         } else {

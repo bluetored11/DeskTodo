@@ -25,7 +25,7 @@ struct DueDatePopoverView: View {
             Label("截止日期", systemImage: "calendar")
                 .font(.headline)
 
-            DatePicker("", selection: $selectedDate, displayedComponents: [.date])
+            DatePicker("", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
                 .datePickerStyle(.graphical)
                 .labelsHidden()
                 .frame(maxWidth: 300)
