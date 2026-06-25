@@ -79,13 +79,12 @@ struct TaskRowView: View {
                                     .monospacedDigit()
                             }
                             Button {
-                                withAnimation(.easeInOut(duration: 0.15)) {
-                                    isExpanded.toggle()
-                                }
+                                isExpanded.toggle()
                             } label: {
                                 Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
+                                    .contentTransition(.symbolEffect(.replace))
                             }
                             .buttonStyle(.plain)
                         }
