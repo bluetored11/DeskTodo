@@ -4,12 +4,30 @@ struct TaskInputView: View {
     @Environment(TodoStore.self) private var store
     @State private var text = ""
     @FocusState private var isFocused: Bool
+    @State private var showAIPlanner = false
 
     var body: some View {
         HStack(spacing: 8) {
+            // AI planner button
+            Button {
+                showAIPlanner = true
+            } label: {
+                Image(systemName: "wand.and.stars")
+                    .foregroundStyle(.purple)
+                    .font(.title3)
+            }
+            .buttonStyle(.plain)
+            .help("AI 任务规划")
+            .sheet(isPresented: $showAIPlanner) {
+                AIPlannerSheet()
+                    .environment(store)
+            }
+
+            // Standard add button
             Image(systemName: "plus.circle.fill")
                 .foregroundStyle(.blue)
                 .font(.title3)
+
             TextField("添加任务...", text: $text)
                 .textFieldStyle(.plain)
                 .font(.body)
