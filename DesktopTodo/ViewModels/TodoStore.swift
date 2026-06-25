@@ -9,6 +9,7 @@ final class TodoStore {
     var items: [TodoItem] = []
     var lists: [TodoList] = []
     var selectedListID: UUID? = nil
+    @ObservationIgnored private var schedulingTasks: [UUID: Task<Void, Never>] = [:]
 
     init(context: ModelContext) {
         self.context = context
@@ -68,6 +69,7 @@ final class TodoStore {
 
     func deleteList(_ list: TodoList) {
         if selectedListID == list.id { selectedListID = nil }
+        (list.items ?? []).forEach { NotificationService.shared.cancelAll(for: $0) }
         context.delete(list)
         fetchLists()
         fetch()
@@ -97,7 +99,11 @@ final class TodoStore {
 
     func toggleComplete(_ item: TodoItem) {
         item.isCompleted.toggle()
-        if item.isCompleted { NotificationService.shared.cancelAll(for: item) }
+        if item.isCompleted {
+            NotificationService.shared.cancelAll(for: item)
+        } else if item.dueDate != nil && item.reminderOffset != nil {
+            NotificationService.shared.schedule(for: item)
+        }
         fetch()
     }
 
@@ -105,6 +111,9 @@ final class TodoStore {
         let trimmed = title.trimmingCharacters(in: .whitespaces)
         guard !trimmed.isEmpty else { return }
         item.title = trimmed
+        if item.dueDate != nil && item.reminderOffset != nil {
+            NotificationService.shared.schedule(for: item)
+        }
     }
 
     func setPriority(_ item: TodoItem, priority: Priority) {
@@ -112,13 +121,32 @@ final class TodoStore {
     }
 
     func deleteItem(_ item: TodoItem) {
+        schedulingTasks[item.id]?.cancel()
+        schedulingTasks[item.id] = nil
         NotificationService.shared.cancelAll(for: item)
         context.delete(item)
         fetch()
     }
 
     func move(from source: IndexSet, to destination: Int) {
-        var reordered = currentItems
+        let current = currentItems
+        guard let firstSource = source.first else { return }
+        let sourcePriority = current[firstSource].priority
+        let sourceCompleted = current[firstSource].isCompleted
+
+        // Check the item at or just before the destination slot
+        let checkIdx = min(destination, current.count - 1)
+        let neighborIdx = max(0, destination - 1)
+        let destPriority = current[checkIdx].priority
+        let destCompleted = current[checkIdx].isCompleted
+        let neighborPriority = current[neighborIdx].priority
+        let neighborCompleted = current[neighborIdx].isCompleted
+
+        // Allow the move only if both boundary items share the source's priority group
+        guard (destPriority == sourcePriority && destCompleted == sourceCompleted) ||
+              (neighborPriority == sourcePriority && neighborCompleted == sourceCompleted) else { return }
+
+        var reordered = current
         reordered.move(fromOffsets: source, toOffset: destination)
         for (index, item) in reordered.enumerated() { item.order = index }
         fetch()
@@ -130,9 +158,17 @@ final class TodoStore {
         item.dueDate = date
         item.reminderOffset = reminderOffset
         if reminderOffset != nil {
-            Task {
+            schedulingTasks[item.id]?.cancel()
+            let itemID = item.id
+            schedulingTasks[item.id] = Task { [weak self] in
+                guard let self else { return }
                 let granted = await NotificationService.shared.requestPermission()
-                if granted { NotificationService.shared.schedule(for: item) }
+                guard !Task.isCancelled && granted else {
+                    if !granted { item.reminderOffset = nil }
+                    return
+                }
+                NotificationService.shared.schedule(for: item)
+                schedulingTasks[itemID] = nil
             }
         } else {
             NotificationService.shared.cancelAll(for: item)

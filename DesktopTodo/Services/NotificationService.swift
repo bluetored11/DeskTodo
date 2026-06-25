@@ -6,10 +6,10 @@ final class NotificationService {
     static let shared = NotificationService()
     private init() {}
 
-    /// Returns false when running outside a proper app bundle (e.g., unit tests),
+    /// Returns false when running in a test process (XCTestConfigurationFilePath is set),
     /// where UNUserNotificationCenter would throw NSInternalInconsistencyException.
     private var isAvailable: Bool {
-        !(Bundle.main.bundleIdentifier ?? "").isEmpty
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil
     }
 
     func requestPermission() async -> Bool {

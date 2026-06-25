@@ -11,7 +11,12 @@ struct DueDatePopoverView: View {
 
     init(item: TodoItem) {
         self.item = item
-        _selectedDate = State(initialValue: item.dueDate ?? Calendar.current.startOfDay(for: Date()))
+        let defaultDate: Date = {
+            var comps = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+            comps.hour = 9; comps.minute = 0
+            return Calendar.current.date(from: comps) ?? Date()
+        }()
+        _selectedDate = State(initialValue: item.dueDate ?? defaultDate)
         _selectedOffset = State(initialValue: item.reminderOffset)
     }
 
