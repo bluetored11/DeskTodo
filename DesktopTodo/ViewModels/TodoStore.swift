@@ -100,6 +100,7 @@ final class TodoStore {
     func toggleComplete(_ item: TodoItem) {
         item.isCompleted.toggle()
         if item.isCompleted {
+            item.subtasks?.forEach { $0.isCompleted = true }   // cascade to all sub-tasks
             NotificationService.shared.cancelAll(for: item)
         } else if item.dueDate != nil && item.reminderOffset != nil {
             NotificationService.shared.schedule(for: item)
@@ -124,6 +125,7 @@ final class TodoStore {
         schedulingTasks[item.id]?.cancel()
         schedulingTasks[item.id] = nil
         NotificationService.shared.cancelAll(for: item)
+        item.subtasks?.forEach { context.delete($0) }   // explicit pre-delete (SwiftData cascade backup)
         context.delete(item)
         fetch()
     }
@@ -163,5 +165,47 @@ final class TodoStore {
         item.dueDate = nil
         item.reminderOffset = nil
         item.reminderID = nil
+    }
+
+    // MARK: - Sub-task CRUD
+
+    func addSubTask(to item: TodoItem, title: String) {
+        let trimmed = title.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { return }
+        let order = item.subtasks?.count ?? 0
+        let sub = SubTask(title: trimmed, order: order)
+        sub.item = item
+        context.insert(sub)
+        fetch()
+    }
+
+    func toggleSubTask(_ sub: SubTask) {
+        sub.isCompleted.toggle()
+        autoCompleteParentIfNeeded(sub.item)
+    }
+
+    func updateSubTaskTitle(_ sub: SubTask, title: String) {
+        let trimmed = title.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { return }
+        sub.title = trimmed
+    }
+
+    func deleteSubTask(_ sub: SubTask) {
+        if let item = sub.item,
+           let index = item.subtasks?.firstIndex(of: sub) {
+            item.subtasks?.remove(at: index)
+        }
+        context.delete(sub)
+        fetch()
+    }
+
+    private func autoCompleteParentIfNeeded(_ item: TodoItem?) {
+        guard let item,
+              let subs = item.subtasks, !subs.isEmpty else { return }
+        let allDone = subs.allSatisfy(\.isCompleted)
+        if allDone && !item.isCompleted {
+            item.isCompleted = true
+            NotificationService.shared.cancelAll(for: item)
+        }
     }
 }

@@ -133,4 +133,117 @@ final class TodoStoreTests: XCTestCase {
         XCTAssertNil(item.reminderOffset)
         XCTAssertNil(item.reminderID)
     }
+
+    // MARK: - Sub-task CRUD
+
+    func testAddSubTask() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "子任务1")
+        XCTAssertEqual(item.subtasks?.count, 1)
+        XCTAssertEqual(item.subtasks?.first?.title, "子任务1")
+        XCTAssertFalse(item.subtasks!.first!.isCompleted)
+    }
+
+    func testAddSubTaskTrimsWhitespace() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "  子任务  ")
+        XCTAssertEqual(item.subtasks?.first?.title, "子任务")
+    }
+
+    func testAddSubTaskIgnoresEmptyTitle() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "   ")
+        XCTAssertEqual(item.subtasks?.count ?? 0, 0)
+    }
+
+    func testUpdateSubTaskTitle() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "旧标题")
+        let sub = item.subtasks!.first!
+        store.updateSubTaskTitle(sub, title: "新标题")
+        XCTAssertEqual(sub.title, "新标题")
+    }
+
+    func testUpdateSubTaskTitleIgnoresEmpty() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "原标题")
+        let sub = item.subtasks!.first!
+        store.updateSubTaskTitle(sub, title: "   ")
+        XCTAssertEqual(sub.title, "原标题")
+    }
+
+    func testToggleSubTaskCompletesParentWhenAllDone() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "子1")
+        store.addSubTask(to: item, title: "子2")
+        let subs = item.subtasks!
+        XCTAssertEqual(subs.count, 2)
+        // Toggle first — parent should stay incomplete
+        store.toggleSubTask(subs[0])
+        XCTAssertFalse(item.isCompleted)
+        // Toggle second — all done, parent should auto-complete
+        store.toggleSubTask(subs[1])
+        XCTAssertTrue(item.isCompleted)
+    }
+
+    func testToggleSubTaskDoesNotAutoUncompleteParent() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "子1")
+        store.addSubTask(to: item, title: "子2")
+        let subs = item.subtasks!
+        // Complete all → parent auto-completes
+        store.toggleSubTask(subs[0])
+        store.toggleSubTask(subs[1])
+        XCTAssertTrue(item.isCompleted)
+        // Uncomplete one → parent stays completed (no reverse link)
+        store.toggleSubTask(subs[0])
+        XCTAssertTrue(item.isCompleted)
+    }
+
+    func testToggleCompleteParentCascadesToSubtasks() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "子1")
+        store.addSubTask(to: item, title: "子2")
+        store.toggleComplete(item)
+        XCTAssertTrue(item.isCompleted)
+        XCTAssertTrue(item.subtasks!.allSatisfy(\.isCompleted))
+    }
+
+    func testToggleCompleteParentUncompleteDoesNotRevertSubtasks() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "子1")
+        store.toggleComplete(item)   // complete → sub also completed
+        store.toggleComplete(item)   // uncomplete → sub stays completed
+        XCTAssertFalse(item.isCompleted)
+        XCTAssertTrue(item.subtasks!.first!.isCompleted)
+    }
+
+    func testDeleteSubTask() {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "子1")
+        let sub = item.subtasks!.first!
+        store.deleteSubTask(sub)
+        XCTAssertEqual(item.subtasks?.count ?? 0, 0)
+    }
+
+    func testDeleteItemAlsoDeletesSubtasks() throws {
+        store.addItem(title: "父任务")
+        let item = store.currentItems[0]
+        store.addSubTask(to: item, title: "子1")
+        store.deleteItem(item)
+        // Verify sub-tasks are gone from the context
+        let subDescriptor = FetchDescriptor<SubTask>()
+        let remainingSubs = try container.mainContext.fetch(subDescriptor)
+        XCTAssertEqual(remainingSubs.count, 0)
+    }
 }
