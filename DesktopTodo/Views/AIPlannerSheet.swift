@@ -175,11 +175,18 @@ struct AIPlannerSheet: View {
                     lineCount += 1
                 }
                 isStreaming = false
+                if steps.isEmpty && errorMessage == nil {
+                    errorMessage = "未能生成步骤，请重新描述或换个角度"
+                }
             } catch is CancellationError {
                 isStreaming = false
             } catch {
                 isStreaming = false
-                errorMessage = friendlyError(error)
+                if !steps.isEmpty {
+                    errorMessage = "生成中断，可使用已有步骤"
+                } else {
+                    errorMessage = friendlyError(error)
+                }
             }
         }
     }
