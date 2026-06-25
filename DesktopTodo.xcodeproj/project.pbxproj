@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		065B9C5FFEBF5ED84414B6EE /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7726462FCBB93AC0A652B6F5 /* TodoStore.swift */; };
+		08D991D6788132FAEF998C44 /* DueDatePopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BEAC814797854BB10DA76A /* DueDatePopoverView.swift */; };
 		2453C3B56A9D2F8B08B3C6E5 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C588F85D9B1390B3FE20459 /* TaskListView.swift */; };
 		30A1B0D79B550951559C71FA /* WindowAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011D7A7E5F91C7FFBCDD784 /* WindowAccessor.swift */; };
 		3FF916C7B164F3512537DA2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D1D2801901BD63CFA74EBD /* Assets.xcassets */; };
@@ -17,10 +18,10 @@
 		5ED4EBC1F3EA8CC5DAA84292 /* DesktopTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */; };
 		7D33DE5D3EB9C9EBD916E7F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3413C7CCEC1709C16E7352E /* ContentView.swift */; };
 		9D417A486DC82366F6EB4127 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74846E89F0D2A06A20AEA23 /* TaskRowView.swift */; };
-		A2B3C4D5E6F7A8B9C0D1E2F3 /* DueDatePopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D5E6F7A8B9C0D1E2F3A4 /* DueDatePopoverView.swift */; };
 		9D47253E5E748BA0ABE8EEE8 /* TaskInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66378323CB03BD6900DDF3EE /* TaskInputView.swift */; };
 		A191A9FB734D88BFE408B90A /* ReminderOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE61E8FB51B1F676E353B8A /* ReminderOffset.swift */; };
 		C8AB8DDCF3410533A6A5A3AC /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE57CDDF5ED55A3668FC62C /* TodoItem.swift */; };
+		EC0EB7078C26429A3F4CDFCD /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753085D1737BBA387D96D6E /* NotificationService.swift */; };
 		F53998A6E9B04D013DC2D663 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F631D7F4DF5778113D51A /* SidebarView.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		45AA0358E15C871ED31465D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5377B64CD584E4E15FC457DA /* DesktopTodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesktopTodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		542F631D7F4DF5778113D51A /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		5753085D1737BBA387D96D6E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		606E56ACC37EE55FCC72F7B9 /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		66378323CB03BD6900DDF3EE /* TaskInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInputView.swift; sourceTree = "<group>"; };
 		7726462FCBB93AC0A652B6F5 /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
@@ -50,9 +52,9 @@
 		CFA8CD16F22D97268C9B349C /* TodoStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStoreTests.swift; sourceTree = "<group>"; };
 		D3413C7CCEC1709C16E7352E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D74846E89F0D2A06A20AEA23 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
-		B3C4D5E6F7A8B9C0D1E2F3A4 /* DueDatePopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDatePopoverView.swift; sourceTree = "<group>"; };
 		EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopTodoApp.swift; sourceTree = "<group>"; };
 		ECE61E8FB51B1F676E353B8A /* ReminderOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderOffset.swift; sourceTree = "<group>"; };
+		F1BEAC814797854BB10DA76A /* DueDatePopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDatePopoverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -62,6 +64,14 @@
 				EAFCB69808A20354F9CAB1DE /* DesktopTodoApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		4651AAC6FCDF7BA961151D31 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5753085D1737BBA387D96D6E /* NotificationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		A38EFF96D1E750DD5AEED42B /* ViewModels */ = {
@@ -103,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				D3413C7CCEC1709C16E7352E /* ContentView.swift */,
-				B3C4D5E6F7A8B9C0D1E2F3A4 /* DueDatePopoverView.swift */,
+				F1BEAC814797854BB10DA76A /* DueDatePopoverView.swift */,
 				542F631D7F4DF5778113D51A /* SidebarView.swift */,
 				66378323CB03BD6900DDF3EE /* TaskInputView.swift */,
 				8C588F85D9B1390B3FE20459 /* TaskListView.swift */,
@@ -121,6 +131,7 @@
 				45AA0358E15C871ED31465D6 /* Info.plist */,
 				0D86E41A1F4AC8B290D6D765 /* App */,
 				CE05EA4EA6C8875E6335C73F /* Models */,
+				4651AAC6FCDF7BA961151D31 /* Services */,
 				A38EFF96D1E750DD5AEED42B /* ViewModels */,
 				D9DF1477F8EC46122F9F2D66 /* Views */,
 			);
@@ -235,8 +246,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D33DE5D3EB9C9EBD916E7F7 /* ContentView.swift in Sources */,
-				A2B3C4D5E6F7A8B9C0D1E2F3 /* DueDatePopoverView.swift in Sources */,
 				5ED4EBC1F3EA8CC5DAA84292 /* DesktopTodoApp.swift in Sources */,
+				08D991D6788132FAEF998C44 /* DueDatePopoverView.swift in Sources */,
+				EC0EB7078C26429A3F4CDFCD /* NotificationService.swift in Sources */,
 				A191A9FB734D88BFE408B90A /* ReminderOffset.swift in Sources */,
 				F53998A6E9B04D013DC2D663 /* SidebarView.swift in Sources */,
 				9D47253E5E748BA0ABE8EEE8 /* TaskInputView.swift in Sources */,

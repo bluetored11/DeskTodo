@@ -97,6 +97,7 @@ final class TodoStore {
 
     func toggleComplete(_ item: TodoItem) {
         item.isCompleted.toggle()
+        if item.isCompleted { NotificationService.shared.cancelAll(for: item) }
         fetch()
     }
 
@@ -111,6 +112,7 @@ final class TodoStore {
     }
 
     func deleteItem(_ item: TodoItem) {
+        NotificationService.shared.cancelAll(for: item)
         context.delete(item)
         fetch()
     }
@@ -127,9 +129,18 @@ final class TodoStore {
     func setDueDate(_ item: TodoItem, date: Date, reminderOffset: ReminderOffset?) {
         item.dueDate = date
         item.reminderOffset = reminderOffset
+        if reminderOffset != nil {
+            Task {
+                let granted = await NotificationService.shared.requestPermission()
+                if granted { NotificationService.shared.schedule(for: item) }
+            }
+        } else {
+            NotificationService.shared.cancelAll(for: item)
+        }
     }
 
     func clearDueDate(_ item: TodoItem) {
+        NotificationService.shared.cancelAll(for: item)
         item.dueDate = nil
         item.reminderOffset = nil
         item.reminderID = nil
