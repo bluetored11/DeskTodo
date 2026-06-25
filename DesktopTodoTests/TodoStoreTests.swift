@@ -8,7 +8,7 @@ final class TodoStoreTests: XCTestCase {
     var store: TodoStore!
 
     override func setUp() async throws {
-        let schema = Schema([TodoItem.self, TodoList.self])
+        let schema = Schema([TodoItem.self, TodoList.self, SubTask.self])
         let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
         container = try ModelContainer(for: schema, configurations: [config])
         store = TodoStore(context: container.mainContext)

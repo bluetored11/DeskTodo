@@ -27,6 +27,9 @@ final class TodoItem {
 
     var list: TodoList?
 
+    @Relationship(deleteRule: .cascade, inverse: \SubTask.item)
+    var subtasks: [SubTask]?
+
     init(title: String, order: Int = 0) {
         self.id = UUID()
         self.title = title

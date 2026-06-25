@@ -4,7 +4,7 @@ import SwiftData
 @main
 struct DesktopTodoApp: App {
     private let container: ModelContainer = {
-        let schema = Schema([TodoItem.self, TodoList.self])
+        let schema = Schema([TodoItem.self, TodoList.self, SubTask.self])
         let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         do {
             return try ModelContainer(for: schema, configurations: [config])
