@@ -204,6 +204,8 @@ final class TodoStore {
         let allDone = subs.allSatisfy(\.isCompleted)
         if allDone && !item.isCompleted {
             item.isCompleted = true
+            schedulingTasks[item.id]?.cancel()          // cancel any in-flight schedule Task
+            schedulingTasks[item.id] = nil
             NotificationService.shared.cancelAll(for: item)
         }
     }

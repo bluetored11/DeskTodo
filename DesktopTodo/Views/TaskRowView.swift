@@ -62,7 +62,6 @@ struct TaskRowView: View {
                             .font(.body)
                             .strikethrough(item.isCompleted, color: .secondary)
                             .foregroundStyle(item.isCompleted ? .secondary : .primary)
-                            .onTapGesture(count: 2) { startEditing() }
 
                         // Progress + expand/collapse
                         // Show chevron on hover (even with 0 sub-tasks) so the first sub-task is reachable.
@@ -93,6 +92,7 @@ struct TaskRowView: View {
 
                         Spacer()
                     }
+                    .onTapGesture(count: 2) { startEditing() }
                 }
 
                 // Hover-reveal: date button + delete
