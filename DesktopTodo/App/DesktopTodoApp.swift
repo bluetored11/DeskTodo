@@ -28,6 +28,10 @@ struct DesktopTodoApp: App {
                 .keyboardShortcut("n")
             }
         }
+
+        Settings {
+            SettingsView()
+        }
     }
 }
 
