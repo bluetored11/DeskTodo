@@ -190,9 +190,10 @@ final class TodoStore {
     }
 
     func deleteSubTask(_ sub: SubTask) {
-        if let item = sub.item,
-           let index = item.subtasks?.firstIndex(of: sub) {
-            item.subtasks?.remove(at: index)
+        // SwiftData does not update the in-memory relationship array immediately after
+        // context.delete, so we remove the element manually to keep in-memory state consistent.
+        if let index = sub.item?.subtasks?.firstIndex(of: sub) {
+            sub.item?.subtasks?.remove(at: index)
         }
         context.delete(sub)
     }
