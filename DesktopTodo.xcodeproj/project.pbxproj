@@ -28,6 +28,7 @@
 		A272470685E837F04C0C4754 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF759090FF894DAA31499672 /* KeychainService.swift */; };
 		C30C5BF8C7FF9AB44710966D /* SubTaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE326CFFE1360428AF40DE75 /* SubTaskRowView.swift */; };
 		C8AB8DDCF3410533A6A5A3AC /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE57CDDF5ED55A3668FC62C /* TodoItem.swift */; };
+		E3892645558FE949EE6AED05 /* AIPlannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6196B9BF9F7A99BD1DF03 /* AIPlannerSheet.swift */; };
 		EC0EB7078C26429A3F4CDFCD /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753085D1737BBA387D96D6E /* NotificationService.swift */; };
 		F53998A6E9B04D013DC2D663 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542F631D7F4DF5778113D51A /* SidebarView.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		65D8744261E8FEDB6CAE43B0 /* OpenAIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIServiceTests.swift; sourceTree = "<group>"; };
 		66378323CB03BD6900DDF3EE /* TaskInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInputView.swift; sourceTree = "<group>"; };
 		6B7EB926F4A9A26CFB29DB0D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		70A6196B9BF9F7A99BD1DF03 /* AIPlannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIPlannerSheet.swift; sourceTree = "<group>"; };
 		7726462FCBB93AC0A652B6F5 /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 		8C588F85D9B1390B3FE20459 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		9D211CB2FC9ABC4607083153 /* DesktopTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesktopTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +133,7 @@
 		D9DF1477F8EC46122F9F2D66 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				70A6196B9BF9F7A99BD1DF03 /* AIPlannerSheet.swift */,
 				D3413C7CCEC1709C16E7352E /* ContentView.swift */,
 				F1BEAC814797854BB10DA76A /* DueDatePopoverView.swift */,
 				6B7EB926F4A9A26CFB29DB0D /* SettingsView.swift */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3892645558FE949EE6AED05 /* AIPlannerSheet.swift in Sources */,
 				7D33DE5D3EB9C9EBD916E7F7 /* ContentView.swift in Sources */,
 				5ED4EBC1F3EA8CC5DAA84292 /* DesktopTodoApp.swift in Sources */,
 				08D991D6788132FAEF998C44 /* DueDatePopoverView.swift in Sources */,
