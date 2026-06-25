@@ -176,7 +176,6 @@ final class TodoStore {
         let sub = SubTask(title: trimmed, order: order)
         sub.item = item
         context.insert(sub)
-        fetch()
     }
 
     func toggleSubTask(_ sub: SubTask) {
@@ -196,7 +195,6 @@ final class TodoStore {
             item.subtasks?.remove(at: index)
         }
         context.delete(sub)
-        fetch()
     }
 
     private func autoCompleteParentIfNeeded(_ item: TodoItem?) {
