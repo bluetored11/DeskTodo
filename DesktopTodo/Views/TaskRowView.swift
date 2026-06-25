@@ -84,7 +84,6 @@ struct TaskRowView: View {
                                 Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
-                                    .contentTransition(.symbolEffect(.replace))
                             }
                             .buttonStyle(.plain)
                         }
